@@ -1,0 +1,550 @@
+/* ========================================= */
+/* 0. 基本設定與字體 */
+/* ========================================= */
+:root {
+    --primary-color: #3f51b5; /* 靛藍色 (代表科技與專業) */
+    --secondary-color: #ff4081; /* 粉紅色 (點綴與活力) */
+    --text-dark: #333;
+    --text-light: #f4f4f4;
+    --bg-light: #ffffff;
+    --bg-dark: #222;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: #f8f8f8;
+    overflow-x: hidden; /* 防止響應式切換時出現水平滾動條 */
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color var(--transition-speed);
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+.section {
+    padding: 80px 0;
+    position: relative; /* 用於背景圖/動畫定位 */
+    overflow: hidden; /* 隱藏超出邊界的動畫效果 */
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--secondary-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* ========================================= */
+/* 1. 核心資訊與品牌 (Header & About) */
+/* ========================================= */
+
+#hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #673ab7 100%);
+    color: var(--text-light);
+    text-align: center;
+    padding: 100px 0;
+    min-height: 100vh; /* 確保佔滿整個視窗高度 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    animation: fadeInDown 1s ease-out; /* 動態效果 */
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--text-light);
+    margin-bottom: 20px;
+    box-shadow: var(--card-shadow);
+    animation: zoomIn 0.8s ease-out; /* 動態效果 */
+}
+
+#hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-size: 1.2em;
+    font-style: italic;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+/* 導航列 */
+#hero nav a {
+    color: var(--text-light);
+    margin: 0 15px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition: background var(--transition-speed), border-color var(--transition-speed);
+}
+
+#hero nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-light);
+}
+
+/* About Me Section */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.about-card {
+    background-color: var(--bg-light);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.about-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 10px;
+}
+
+/* ========================================= */
+/* 2. 技能樹 (Skills) */
+/* ========================================= */
+.skill-section {
+    background-color: #eef1f9; /* 淺藍色背景，用於區隔 */
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.skill-category {
+    background-color: var(--bg-light);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    border-top: 5px solid var(--primary-color);
+    transition: all 0.5s ease;
+}
+
+.skill-category:hover {
+    transform: scale(1.02);
+}
+
+.skill-category h3 {
+    font-size: 1.5em;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.skill-category h3 i {
+    color: var(--secondary-color);
+    margin-right: 10px;
+}
+
+.skill-list {
+    list-style-type: none;
+}
+
+.skill-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #ddd;
+    font-size: 1.05em;
+    /* 增加一個小點的視覺效果 */
+    position: relative;
+    padding-left: 20px;
+}
+
+.skill-list li::before {
+    content: '★';
+    color: var(--primary-color);
+    font-size: 0.8em;
+    position: absolute;
+    left: 0;
+}
+
+/* ========================================= */
+/* 3. 專案作品集 (Portfolio) */
+/* ========================================= */
+.portfolio-section {
+    background-color: var(--bg-light);
+}
+
+.project-card {
+    background-color: #f4f7fc; /* 輕微的底色 */
+    border-radius: var(--border-radius);
+    margin-bottom: 40px;
+    padding: 30px;
+    box-shadow: var(--card-shadow);
+    border-left: 5px solid var(--secondary-color);
+    opacity: 0; /* 配合 AOS 動畫 */
+}
+
+.project-card h3 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.project-summary {
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.tech-used {
+    margin: 15px 0;
+    font-weight: bold;
+    color: #555;
+}
+
+.project-links {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+.project-links .btn:first-child {
+    background-color: var(--text-dark);
+    color: var(--text-light);
+}
+
+.project-links .btn:first-child:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.live-demo {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+}
+
+.live-demo:hover {
+    background-color: #d81b60; /* 更深的粉紅色 */
+    transform: scale(1.05);
+}
+
+/* ========================================= */
+/* 4. 學術與經歷 (Education) */
+/* ========================================= */
+
+.education-section {
+    background-color: #f0fff0; /* 淺綠色背景 */
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* 垂直線 */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--primary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    opacity: 0; /* 配合 AOS 動畫 */
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-dot {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: var(--secondary-color);
+    border: 3px solid var(--primary-color);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* 將點移動到線的兩側 */
+.timeline-item:nth-child(odd) .timeline-dot {
+    right: -7.5px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -7.5px;
+}
+
+.timeline-content {
+    padding: 20px 30px;
+    background-color: var(--bg-light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    position: relative;
+}
+
+.timeline-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.period {
+    color: var(--secondary-color);
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+/* 內容箭頭 */
+.timeline-item:nth-child(odd) .timeline-content::after {
+    content: " ";
+    position: absolute;
+    right: -8px;
+    top: 15px;
+    border: medium solid var(--bg-light);
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent var(--bg-light);
+}
+
+.timeline-item:nth-child(even) .timeline-content::after {
+    content: " ";
+    position: absolute;
+    left: -8px;
+    top: 15px;
+    border: medium solid var(--bg-light);
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--bg-light) transparent transparent;
+}
+
+
+/* ========================================= */
+/* 5. 聯絡方式與社交 (Footer) */
+/* ========================================= */
+
+#contact {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: 50px 0;
+}
+
+#contact h2 {
+    color: var(--secondary-color);
+}
+
+#contact h2::after {
+    background: var(--text-light);
+}
+
+.social-links {
+    margin: 30px 0;
+}
+
+.social-icon {
+    display: inline-block;
+    font-size: 2em;
+    margin: 0 15px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border: 2px solid var(--text-light);
+    border-radius: 50%;
+    color: var(--text-light);
+    transition: background-color var(--transition-speed), color var(--transition-speed), transform var(--transition-speed);
+}
+
+.social-icon:hover {
+    background-color: var(--secondary-color);
+    color: var(--bg-dark);
+    border-color: var(--secondary-color);
+    transform: rotate(10deg) scale(1.1);
+}
+
+#contact p {
+    margin-top: 20px;
+    font-size: 0.9em;
+    opacity: 0.7;
+}
+
+/* ========================================= */
+/* 6. 動態視覺效果 (Keyframes) */
+/* ========================================= */
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ========================================= */
+/* 7. 響應式設計 (Responsive Design) */
+/* ========================================= */
+
+/* 平板電腦 (Tablet) 尺寸: 小於 768px */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 15px;
+    }
+    
+    #hero {
+        min-height: 80vh;
+        padding: 60px 0;
+    }
+
+    #hero h1 {
+        font-size: 2.5em;
+    }
+
+    #hero nav a {
+        display: block;
+        margin: 10px auto;
+        width: 60%;
+    }
+
+    /* 技能樹調整 */
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* 時間軸調整為單欄 */
+    .timeline::after {
+        left: 31px; /* 將線移到左側 */
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+        left: 0 !important; /* 強制所有項目靠左 */
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot,
+    .timeline-item:nth-child(odd) .timeline-dot {
+        left: 24px;
+        margin-left: 0;
+    }
+
+    /* 箭頭調整 */
+    .timeline-item:nth-child(odd) .timeline-content::after {
+        border-width: 10px 10px 10px 0;
+        border-color: transparent var(--bg-light) transparent transparent;
+        left: -8px; /* 箭頭指向左側 */
+        right: auto;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content::after {
+        border-width: 10px 10px 10px 0;
+        border-color: transparent var(--bg-light) transparent transparent;
+        left: -8px; /* 箭頭指向左側 */
+        right: auto;
+    }
+    
+    .project-links .btn {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+/* 手機 (Mobile) 尺寸: 小於 576px */
+@media (max-width: 576px) {
+    #hero h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+    }
+}
